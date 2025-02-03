@@ -9,35 +9,26 @@ import AuthContext from '../../context/context.js';
 import EditPerfil from  '../../components/EditPerfil/EditPerfil.jsx'
 import AssignAccount from '../../components/AssignAccount/AssignAccount.jsx'
 import SectionViewTotalMoney from '../../components/SectionViewTotalMoney/SectionViewTotalMoney.jsx'
-import TableOfAction from '../../components/TableOfAction/TableOfAction.jsx'
+import TableOfTransactions from '../../components/TableOfTransactions/TableOfTransactions.jsx'
+import CarousselAccounts from '../../components/CarousselAccounts/CarousselAccounts.jsx'
 import MonetaryTransation from '../../components/MonetaryTransation/MonetaryTransation.jsx'
 import LineGrafic from '../../components/LineGrafic/LineGrafic.jsx';
 import GridGraficsLayout from '../../components/GridGraficsLayout/GridGraficsLayout.jsx';
 import MaxEntryMaxQuit from '../../components/MaxEntryMaxQuit/MaxEntryMaxQuit.jsx';
+import Footer from  '../../components/Footer/Footer.jsx'
 import api from '../../api/api.js';
 
 export default function HomeTech() {
 
 
-  const { menuIsOpen, setMenuIsOpen,selectedMenu,setSelectedMenu,nameAccount,setNameAccount } = useContext(AuthContext);
+  const { menuIsOpen, setMenuIsOpen,selectedMenu,setSelectedMenu,nameAccount,setNameAccount,viewGrafics,setViewGrafics,viewTransactions,setViewTransactions } = useContext(AuthContext);
 
   const navigate = useNavigate()
 
 
   const [userCredentials, setUserCredentials] = useState(null)
 
-  useEffect(() => {
-    const collectUserCredentials = async () => {
-      try {
-        const response = await api.get("/tech/user/credentials", { withCredentials: true });
-        console.log("Response data:", response.data);
-        setUserCredentials(response.data);
-      } catch (error) {
-        console.error("Error fetching user credentials:", error);
-      }
-    };
-    collectUserCredentials();
-  }, []);
+ 
 
   const TokenNotExists = (token) => {
     if (!token) return true;
@@ -86,7 +77,7 @@ export default function HomeTech() {
 
   return (
     <div>
-      <div className={`flex  min-h-lvh h-auto bg-tech-purple`}>
+      <div className={`flex transition-all  min-h-lvh h-auto bg-tech-purple`}>
           {userCredentials!=null? userCredentials.name:""}
           <MenuDropDown />
         
@@ -107,17 +98,24 @@ export default function HomeTech() {
                 nameAccount != ""?
             <MonetaryTransation/>
             :
-            <TableOfAction/>
+            <CarousselAccounts/>
               }
             </div>
             :
-            <div className='flex flex-col w-full  h-full'>
+            <div className='flex flex-col w-full items-center  h-full'>
             <Header />
             <SectionViewTotalMoney/>
             <MaxEntryMaxQuit/>
-            <TableOfAction/>
-            
-           <GridGraficsLayout/>
+            {viewTransactions?
+            <TableOfTransactions />
+            :viewGrafics?
+             <GridGraficsLayout/>
+             :
+            <CarousselAccounts/>}
+            {/* POR ENQUANTO LEMBRAR QUE TIROU A GRID DE GRAFICOS */}
+          
+           <Footer/>
+
            
 
      

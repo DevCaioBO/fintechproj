@@ -59,6 +59,7 @@ export default function RegisterTech() {
 
         <>
         <FormAuth ActionName={"inscrever-se"} FormName={"REGISTRAR-SE"} methodForForm={registerOneUser} emailRequired={!emailRequired} setEmailRequired={setEmailRequired} selectedFile={selectedFile} setSelectedFile={setSelectedFile} setSelectedOption={setSelectedOption} selectedOption={selectedOption} setLogin={setLogin} login={login} setPassword={setPassword} password={password} setEmail={setEmail} email={email} roleIsRequired={roleIsRequired} setRoleIsRequired={setRoleIsRequired} setToggle={setToggle} toggle={toggle} />
+      
         </>
 
     )

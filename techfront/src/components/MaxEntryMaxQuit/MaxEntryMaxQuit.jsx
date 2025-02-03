@@ -27,7 +27,7 @@ export default function MaxEntryMaxQuit() {
 
       })
       setCreditDebit(formattedCreditAndDebit)
-      console.log(response.data)
+    
   
     }
     ObtainMaxCreditAndMaxDebit()
@@ -49,7 +49,7 @@ export default function MaxEntryMaxQuit() {
           <div className='flex w-full justify-center py-4 md:py-0 hover:shadow-lg transition-shadow hover:shadow-red-600/50 items-center h-full'>
           <img src={ArrowDebit} alt="" className='w-12 h-16 ' />
             <div className='flex flex-col  justify-center'>
-            <p className='text-white  text-base'>Entrada</p>
+            <p className='text-white  text-base'>Saída</p>
             <p className='text-white font-bold text-2xl'>{CreditDebit.map(itens=>itens.debit)}</p>
             </div>
           </div>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import FormAuth from '../../components/FormAuth/FormAuth.jsx'
 import { useContext } from 'react';
@@ -34,6 +34,8 @@ export default function LoginTech() {
         navigate("/FinTech")
     
     }
+   
+    
 
 
 

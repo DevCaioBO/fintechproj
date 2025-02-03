@@ -6,33 +6,11 @@ import api from '../../api/api.js'
 import SelectOptions from '../../components/SelectOptions/SelectOptions.jsx';
 
 export default function FormAuth({ FormName, ActionName, emailRequired, setEmailRequired, login, selectedFile, setSelectedFile, setLogin, setPassword, password, setEmail, email, setSelectedOption, selectedOption, setToggle, toggle, setRoleIsRequired, roleIsRequired, methodForForm }) {
-  const img_picture = useRef();
+
   const navigate = useNavigate();
-  const clientId = "440602114393-690ejccco4qn8etugca92mat4ilrlvn0.apps.googleusercontent.com";
-
-  const onSuccess = async (response) => {
-    try {
-      const { credential } = response;
-      const res = await api.post('tech/google', {
-        token: credential,
-      });
-      const { jwtToken } = res.data;
 
 
-      localStorage.setItem('token', jwtToken);
 
-      alert('Login com Google realizado com sucesso!');
-      navigate('/FinTech'); 
-    } catch (error) {
-      console.error('Erro ao autenticar com Google:', error);
-      alert('Falha no login com o Google.');
-    }
-  };
-
-  const onFailure = (error) => {
-    console.error('Erro no login com o Google:', error);
-    alert('Login com Google falhou. Tente novamente.');
-  };
 
   const options = [
     { value: "ADMIN", label: "ADMIN" },
@@ -45,7 +23,7 @@ export default function FormAuth({ FormName, ActionName, emailRequired, setEmail
   };
 
   return (
-    <GoogleOAuthProvider clientId={clientId}>
+  
       <form
         className="w-full min-h-lvh flex bg-mobile-tech bg-cover bg-no-repeat bg-center md:bg-desktop-tech"
         onSubmit={methodForForm}
@@ -118,16 +96,12 @@ export default function FormAuth({ FormName, ActionName, emailRequired, setEmail
             </button>
           </div>
 
-          <div className="w-full flex justify-center my-3">
-      
-            <GoogleLogin
-              onSuccess={onSuccess}
-              onError={onFailure}
-              useOneTap
-            />
+          <div className="w-full flex text-white justify-center my-3">
+          <Link  to={"/Login"}>Ir logar direto</Link>
+       
           </div>
         </div>
       </form>
-    </GoogleOAuthProvider>
+   
   );
 }

@@ -7,17 +7,21 @@ import { NumericFormat } from 'react-number-format';
 export default function SectionViewTotalMoney() {
     const [myAmount, setMyAmount] = useState(null);
 
-
+    const [isLoading,setIsLoading] = useState(true)
 
 
     useEffect(() => {
         const getTotalAmountOfOneUser = async () => {
-
+            try{
             const response = await api.get("/account/total")
 
             setMyAmount(response.data[0].amount)
+            }
+            finally{
+                setIsLoading(false)
+            }
 
-            console.log(response.data)
+            
 
         }
         getTotalAmountOfOneUser()
@@ -44,20 +48,30 @@ export default function SectionViewTotalMoney() {
 
                     </div>
                     <div className='flex '>
-                    
+                            {
+                                !isLoading?
+                                myAmount!=null?
                             <NumericFormat
-                                //   Para dolar (myAmount/100)/6.19
+                             
                                 value={myAmount }
                                 displayType={'text'}
                                 thousandSeparator={"."}
                                 decimalSeparator={","}
                                 fixedDecimalScale={true}
                                 decimalScale={2}
+                            
 
                                 prefix={"R$"}
 
                                 className=' flex  text-xl md:text-2xl lg:text-4xl w-full text-white font-bold mt-5 ml-5'
-                            /> 
+                            /> :
+                            <p className=' flex  text-xl md:text-2xl lg:text-4xl w-full text-white font-bold mt-5 ml-5'>Você está pobre... na verdade você não tem nada :(</p>
+                            :
+                            <div className=' flex gap-2 text-xl md:text-2xl lg:text-4xl w-full text-white font-bold mt-5 ml-5'>
+                            <p>Carregando...</p>
+                            <span className='text-yellow-600 animate-spin'>Q</span>
+                            </div>
+}
                         
                     </div>
                 </div>

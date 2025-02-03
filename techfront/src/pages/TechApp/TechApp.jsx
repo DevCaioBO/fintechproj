@@ -26,7 +26,9 @@ const [email,setEmail] = useState("");
 const [selectedMenu,setSelectedMenu] = useState("")
  const [dataForTable,setDataForTable] = useState([])
  const [nameAccount,setNameAccount] = useState("")
- const [IdTransact,setIdTransact] = useState(0)
+ const [IdAccounts,setIdAccounts] = useState(0)
+ const [viewTransactions,setViewTransactions] = useState(false)
+ const [viewGrafics,setViewGrafics] = useState(false)
  
 
 
@@ -35,7 +37,7 @@ const [selectedMenu,setSelectedMenu] = useState("")
 
   return (
     <BrowserRouter>
-        <AuthContext.Provider value={{setSelectedOption,selectedOption,username, setUsername,setLogin,login,setPassword,password,setEmail,email,setRoleIsRequired,emailRequired,setEmailRequired,RoleIsRequired,toggle,setToggle,selectedFile,setSelectedFile,setMenuIsOpen,menuIsOpen,updatedImage,setUpdatedImage,imagePerfil,setImagePerfil,selectedMenu,setSelectedMenu,dataForTable,setDataForTable,nameAccount,setNameAccount,setIdTransact,IdTransact}}>
+        <AuthContext.Provider value={{setSelectedOption,selectedOption,username, setUsername,setLogin,login,setPassword,password,setEmail,email,setRoleIsRequired,emailRequired,setEmailRequired,RoleIsRequired,toggle,setToggle,selectedFile,setSelectedFile,setMenuIsOpen,menuIsOpen,updatedImage,setUpdatedImage,imagePerfil,setImagePerfil,selectedMenu,setSelectedMenu,dataForTable,setDataForTable,nameAccount,setNameAccount,IdAccounts,setIdAccounts,viewTransactions,setViewTransactions,viewGrafics,setViewGrafics}}>
         <Routes>
         <Route path='/' element={<RegisterTech/>}></Route>
         <Route path='/login' element={<LoginTech/>}></Route>

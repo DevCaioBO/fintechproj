@@ -24,7 +24,10 @@ export default {
         "tech-assign-account":"#3e5c76",
         "submit-account":'#1b263b',
         "total-amount":"#525363",
-        "span-decor-one":"#212137"
+        "span-decor-one":"#212137",
+        "purple-clean-500":"#3a0ca3",
+        "blue-dark-600":"#3f37c9",
+        "purple-dark-800":"#560bad"
       },
       fontFamily:{
         "poppins":"Poppins,sans-serif"

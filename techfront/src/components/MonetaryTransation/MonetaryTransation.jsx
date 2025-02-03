@@ -37,7 +37,7 @@ export default function MonetaryTransation() {
 try{
         const response = await api.post("/transaction/create", {
             'name_account':nameAccount,
-            'id_transact':IdTransact,
+            'id_accounts':IdAccounts,
             'created_at': ConvertDate,
             'credit':normalAmountCredit,
             'debit':normalAmountDebit,
@@ -61,7 +61,7 @@ try{
         :
         setAmountDebit(valueFormatter)
     }
-    const { nameAccount, setNameAccount, menuIsOpen, setMenuIsOpen,IdTransact,setIdTransact } = useContext(AuthContext)
+    const { nameAccount, setNameAccount, menuIsOpen, setMenuIsOpen,IdAccounts,setIdAccounts } = useContext(AuthContext)
     const [createdAt, setCreatedAt] = useState('');
     const [typeTransaction, setTransactionType] = useState("")
     const [amountCredit, setAmountCredit] = useState('');
