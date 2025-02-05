@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+.bg-mobile-tech {
+    background-image: url('src/assets/img/mobile-tech.png');
+}
+
+.bg-desktop-tech {
+    background-image: url('src/assets/img/desktop-tech.jpg');
+}

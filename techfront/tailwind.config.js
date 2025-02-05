@@ -8,12 +8,7 @@ export default {
   ],
   theme: {
     extend: {
-      backgroundImage:{
-        "mobile-tech":"url('src/assets/img/mobile-tech.png')",
-        "desktop-tech":"url('src/assets/img/desktop-tech.jpg')",
-      
-        
-      },
+
       
       colors:{
         "ocean-green":"#009990",
